@@ -1,22 +1,15 @@
-const sequelize = require('./config/database');
 const express = require('express');
-const jogadoresRoutes = require('./routes/jogadores')
+const routes = require('./routes')
 
-// Sincronize todos os modelos
-sequelize.sync()
-  .then(() => {
-    console.log('Modelos sincronizados com o banco de dados MySQL.');
-  })
-  .catch(error => console.error('Erro ao sincronizar modelos:', error));
-
-
+// Middleware para lidar com JSON
 const app = express();
-app.use(express.json()); // Permite o envio de JSON no corpo das requisições
+app.use(express.json());
 
-app.use('/', jogadoresRoutes);
+// Registrar as rotas
+app.use('/api', routes);
 
-const PORT = process.env.PORT || 3000; // Verifique se está definida aqui
-
+// Iniciar o servidor
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);
 });
