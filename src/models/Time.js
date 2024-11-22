@@ -25,6 +25,6 @@ const Time = sequelize.define('Time', {
 
 const Pais = require('./Pais');
 Time.belongsTo(Pais, { foreignKey: 'paisId' });
-Pais.hasMany(Time, { foreignKey: 'paisId' });
+Pais.hasMany(Time, { foreignKey: 'paisId', as: 'times' });
 
 module.exports = Time;

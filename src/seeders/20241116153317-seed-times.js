@@ -14,6 +14,16 @@ module.exports = {
         paisId: paisBrasil.id
       },
       {
+        nome: 'Flamengo',
+        foto: 'https://logopng.com.br/logos/flamengo-15.png',
+        paisId: paisBrasil.id
+      },
+      {
+        nome: 'Palmeiras',
+        foto: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Palmeiras_logo.svg/2048px-Palmeiras_logo.svg.png',
+        paisId: paisBrasil.id
+      },
+      {
         nome: 'Real Madrid',
         foto: 'https://logopng.com.br/logos/real-madrid-174.png',
         paisId: paisEspanha.id

@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 
-const Time = sequelize.define('Paises', {
+const Pais = sequelize.define('Paises', {
   nome: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -15,4 +15,4 @@ const Time = sequelize.define('Paises', {
   timestamps: false,
 });
 
-module.exports = Time;
+module.exports = Pais;

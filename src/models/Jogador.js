@@ -14,6 +14,10 @@ const Jogador = sequelize.define('Jogador', {
     type: DataTypes.STRING,
     allowNull: true,
   },
+  posicao: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
   timeId: {
     type: DataTypes.INTEGER,
     references: {

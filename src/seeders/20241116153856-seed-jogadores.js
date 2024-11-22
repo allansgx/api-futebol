@@ -6,24 +6,17 @@ const Time = require('../models/Time');
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    const paisBrasil = await Pais.findOne({ where: { nome: 'Brasil' }})
-    const paisEspanha = await Pais.findOne({ where: { nome: 'Espanha' }})
+    const times = await Time.findAll()
+    const jogadoresAdicionar = []
 
-    const timeAvai = await Time.findOne({ where: { nome: 'Avaí' }})
-    const timeRealMadrid = await Time.findOne({ where: { nome: 'Real Madrid' }})
-
-    const jogadoresAvai = Array.from({ length: 15 }).map(() => {
-      return jogadorFactory(timeAvai.id, paisBrasil.id);
+    times.forEach((time) => {
+      const jogadoresTime = Array.from({ length: 15 }).map(() => {
+        return jogadorFactory(time.id, time.paisId);
+      })
+      jogadoresAdicionar.push(...jogadoresTime)
     });
 
-    const jogadoresRealMadrid = Array.from({ length: 15 }).map(() => {
-      return jogadorFactory(timeRealMadrid.id, paisEspanha.id);
-    });
-
-    await queryInterface.bulkInsert('jogadores', [
-      ...jogadoresAvai,
-      ...jogadoresRealMadrid
-    ]);
+    await queryInterface.bulkInsert('jogadores', jogadoresAdicionar);
   },
 
   async down (queryInterface, Sequelize) {

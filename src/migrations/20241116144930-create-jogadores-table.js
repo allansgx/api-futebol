@@ -23,6 +23,10 @@ module.exports = {
             type: Sequelize.STRING,
             allowNull: true,
           },
+          posicao: {
+            type: Sequelize.STRING,
+            allowNull: false,
+          },
           timeId: {
             type: Sequelize.INTEGER,
             allowNull: false,
