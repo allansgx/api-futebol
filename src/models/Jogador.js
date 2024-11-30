@@ -1,5 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
+const Time = require('./Time');
+const Pais = require('./Pais');
 
 const Jogador = sequelize.define('Jogador', {
   nome: {
@@ -38,12 +40,10 @@ const Jogador = sequelize.define('Jogador', {
   timestamps: false,
 });
 
-const Time = require('./Time');
-Jogador.belongsTo(Time, { foreignKey: 'timeId' });
-Time.hasMany(Jogador, { foreignKey: 'timeId' });
+Jogador.belongsTo(Time, { foreignKey: 'timeId', as: 'time' });
+Time.hasMany(Jogador, { foreignKey: 'timeId', as: 'jogadores' });
 
-const Pais = require('./Pais');
-Jogador.belongsTo(Pais, { foreignKey: 'paisId' });
-Pais.hasMany(Jogador, { foreignKey: 'paisId' });
+Jogador.belongsTo(Pais, { foreignKey: 'paisId', as:'pais' });
+Pais.hasMany(Jogador, { foreignKey: 'paisId', as: 'jogadores' });
 
 module.exports = Jogador;
